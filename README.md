@@ -53,7 +53,7 @@ composer require ikechukwukalu/requirepin
 
 ## PUBLISH VIEWS
 
-- `php artisan vendor:publish --tag=rp-view`
+- `php artisan vendor:publish --tag=rp-views`
 
 ## LICENSE
 
