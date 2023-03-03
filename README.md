@@ -49,6 +49,20 @@ composer require ikechukwukalu/requirepin
 - **DELETE** `v1/sample/books{id}`
 - **GET** `create/book`
 
+## HOW IT WORKS
+
+- The `require.pin` middlware should be added to a route or route group.
+- This middleware will arrest all incoming requests.
+- A temporary URL (`pin/required/{uuid}`) is generated for a user to authenticate using their pin over the specified input `config(requirepin.input)`.
+- It either returns a `JSON` response with the generated URL or it redirects to a page where a user is required to authenticate the request by entering their pin into a form that will send a **POST** request to the generated URL.
+
+### reserved keys for payload
+
+- `_uuid`
+- `_pin`
+- `expires`
+- `signature`
+
 ## PUBLISH CONFIG
 
 - `php artisan vendor:publish --tag=rp-config`

@@ -36,7 +36,7 @@ return [
     'min' => 4,
     /**
      * int|boolean - Check all or a specified number of
-     * previous passwords
+     * previous pins
      */
     'check_all' => true,
     /**
