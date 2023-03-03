@@ -21,6 +21,22 @@ composer require ikechukwukalu/requirepin
 
 - `php artisan vendor:publish --tag=rp-migrations`
 - `php artisan migrate`
+- Set `REDIS_CLIENT=predis` and `QUEUE_CONNECTION=redis` within your `.env` file.
+- `php artisan queue:work`
+
+## ROUTES
+
+### api routes
+
+- **POST** `api/change/pin`
+- **POST** `api/pin/required/{uuid}`
+
+### web routes
+
+- **POST** `change/pin`
+- **POST** `pin/required/{uuid}`
+- **GET** `change/pin`
+- **GET** `pin/required/{uuid?}`
 
 ## NOTE
 
