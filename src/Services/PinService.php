@@ -302,7 +302,7 @@ class PinService {
         $expires_at = now()->addSeconds(config('requirepin.duration',
             null));
         $pin_validation_url = URL::temporarySignedRoute(
-            self::pinRequiredRoute($request), $expires_at, ['uuid' => $uuid]);
+            Helpers::pinRequiredRoute($request), $expires_at, ['uuid' => $uuid]);
 
         RequirePin::create([
             "user_id" => Auth::user()->id,
@@ -477,16 +477,5 @@ class PinService {
 
         $requirePin->retry = $maxTrial;
         $requirePin->save();
-    }
-
-    private static function pinRequiredRoute(Request $request): string
-    {
-        $prefix = explode('/', $request->route()->getPrefix())[0];
-
-        if ($prefix === 'api' || $prefix === 'test') {
-            return 'pinRequired';
-        }
-
-        return 'pinRequiredWeb';
     }
 }

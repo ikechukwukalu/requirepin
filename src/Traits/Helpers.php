@@ -139,4 +139,15 @@ trait Helpers {
         return $request->wantsJson() || $request->ajax();
     }
 
+    public static function pinRequiredRoute(Request $request): string
+    {
+        $prefix = explode('/', $request->route()->getPrefix())[0];
+
+        if ($prefix === 'api' || $prefix === 'test') {
+            return 'pinRequired';
+        }
+
+        return 'pinRequiredWeb';
+    }
+
 }
