@@ -51,6 +51,7 @@ composer require ikechukwukalu/requirepin
 
 ## HOW IT WORKS
 
+- First, it's like eating candy.
 - The `require.pin` middlware should be added to a route or route group.
 - This middleware will arrest all incoming requests.
 - A temporary URL (`pin/required/{uuid}`) is generated for a user to authenticate using their pin over the specified input `config(requirepin.input)`.
