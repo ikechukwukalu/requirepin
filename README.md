@@ -26,12 +26,12 @@ composer require ikechukwukalu/requirepin
 
 ## ROUTES
 
-### api routes
+### Api routes
 
 - **POST** `api/change/pin`
 - **POST** `api/pin/required/{uuid}`
 
-### web routes
+### Web routes
 
 - **POST** `change/pin`
 - **POST** `pin/required/{uuid}`
@@ -43,7 +43,7 @@ composer require ikechukwukalu/requirepin
 - To receive json response add `'Accept': 'application/json'` to your headers.
 - To aid your familiarity with this package you can run `php artisan sample:routes` to scaffold routes that will call functions within the `BookController`.
 
-### sample routes
+### Sample routes
 
 - **POST** `v1/sample/books`
 - **DELETE** `v1/sample/books{id}`
@@ -57,7 +57,7 @@ composer require ikechukwukalu/requirepin
 - A temporary URL (`pin/required/{uuid}`) is generated for a user to authenticate using their pin over the specified input `config(requirepin.input)`.
 - It either returns a `JSON` response with the generated URL or it redirects to a page where a user is required to authenticate the request by entering their pin into a form that will send a **POST** request to the generated URL when submitted.
 
-### reserved keys for payload
+### Reserved keys for payload
 
 - `_uuid`
 - `_pin`
