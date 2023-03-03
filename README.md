@@ -54,7 +54,7 @@ composer require ikechukwukalu/requirepin
 - The `require.pin` middlware should be added to a route or route group.
 - This middleware will arrest all incoming requests.
 - A temporary URL (`pin/required/{uuid}`) is generated for a user to authenticate using their pin over the specified input `config(requirepin.input)`.
-- It either returns a `JSON` response with the generated URL or it redirects to a page where a user is required to authenticate the request by entering their pin into a form that will send a **POST** request to the generated URL.
+- It either returns a `JSON` response with the generated URL or it redirects to a page where a user is required to authenticate the request by entering their pin into a form that will send a **POST** request to the generated URL when submitted.
 
 ### reserved keys for payload
 
