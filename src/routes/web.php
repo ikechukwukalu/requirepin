@@ -6,10 +6,10 @@ use Ikechukwukalu\Requirepin\Controllers\PinController;
 
 Route::middleware('auth')->group(function () {
     Route::post('change/pin', [PinController::class, 'changePin'])
-        ->name('changePin');
+        ->name('changePinWeb');
 
     Route::post('pin/required/{uuid}', [PinController::class,
-        'pinRequired'])->name('pinRequired');
+        'pinRequired'])->name('pinRequiredWeb');
 
     Route::get('change/pin', [PinController::class, 'changePinView'])
         ->name('changePinView');

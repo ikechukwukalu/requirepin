@@ -109,9 +109,8 @@ class PinTest extends TestCase
         $response = $this->post($url, $postData, ['Accept' => 'application/json']);
         $responseArray = json_decode($response->getContent(), true);
 
-        $this->assertTrue(isset($responseArray['name']));
-        $this->assertTrue(isset($responseArray['isbn']));
-        $this->assertTrue(isset($responseArray['authors']));
+        $this->assertEquals(200, $responseArray['status_code']);
+        $this->assertEquals('success', $responseArray['status']);
     }
 
     public function testRequirePinMiddleWareForDeleteBook()

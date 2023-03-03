@@ -17,8 +17,8 @@ trait Helpers {
     public function __construct()
     {
         $this->throttleRequestsService = new ThrottleRequestsService(
-            config('requirepin.login.maxAttempts', 3),
-            config('requirepin.login.delayMinutes', 1)
+            config('requirepin.login.max_attempts', 3),
+            config('requirepin.login.delay_minutes', 1)
         );
     }
 

@@ -34,8 +34,8 @@ class PinService {
     public function __construct()
     {
         $this->throttleRequestsService = new ThrottleRequestsService(
-            config('requirepin.maxAttempts', 3),
-            config('requirepin.delayMinutes', 1)
+            config('requirepin.max_attempts', 3),
+            config('requirepin.delay_minutes', 1)
         );
     }
 
@@ -301,8 +301,8 @@ class PinService {
         $uuid = (string) Str::uuid();
         $expires_at = now()->addSeconds(config('requirepin.duration',
             null));
-        $pin_validation_url = URL::temporarySignedRoute('pinRequired',
-            $expires_at, ['uuid' => $uuid]);
+        $pin_validation_url = URL::temporarySignedRoute(
+            self::pinRequiredRoute($request), $expires_at, ['uuid' => $uuid]);
 
         RequirePin::create([
             "user_id" => Auth::user()->id,
@@ -471,11 +471,22 @@ class PinService {
         $maxTrial = $requirePin->retry;
         $maxTrial ++;
 
-        if ($maxTrial >= config('requirepin.maxTrial', 3)) {
+        if ($maxTrial >= config('requirepin.max_trial', 3)) {
             $requirePin->approved_at = now();
         }
 
         $requirePin->retry = $maxTrial;
         $requirePin->save();
+    }
+
+    private static function pinRequiredRoute(Request $request): string
+    {
+        $prefix = explode('/', $request->route()->getPrefix())[0];
+
+        if ($prefix === 'api' || $prefix === 'test') {
+            return 'pinRequired';
+        }
+
+        return 'pinRequiredWeb';
     }
 }

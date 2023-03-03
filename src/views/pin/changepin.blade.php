@@ -16,7 +16,7 @@
                             {!! $data['message'] !!}
                         </div>
                     @endif
-                    <form method="POST" action="{{ route('changePin') }}">
+                    <form method="POST" action="{{ route('changePinWeb') }}">
                         @csrf
 
                         <div class="row mb-3">

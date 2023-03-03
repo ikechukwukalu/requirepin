@@ -12,7 +12,7 @@ class ServiceProviderTest extends TestCase
         static::assertSame(
             $this->app->make('files')
                 ->getRequire(RequirePinServiceProvider::CONFIG),
-            $this->app->make('config')->get('requirepin')
+            $this->app->make('config')->get('require-pin')
         );
     }
 

@@ -26,10 +26,9 @@ class BookController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @return \Illuminate\Http\Response
      */
-    public function createBook(CreateBookRequest $request): array|JsonResponse|RedirectResponse|Response
+    public function createBook(CreateBookRequest $request): JsonResponse|RedirectResponse|Response
     {
         $validated = $request->validated();
-        return $validated;
 
         if ($book = Book::create($validated)) {
             $data = $book;

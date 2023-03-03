@@ -47,17 +47,22 @@ return [
      * int - Number of times a user is allowed to authenticate
      * using his pin
      */
-    'maxAttempts' => 3,
+    'max_attempts' => 3,
     /**
      * int - Number of times a user is allowed to authenticate
      * using his pin
      */
-    'delayMinutes' => 1,
+    'delay_minutes' => 1,
     /**
      * int - Number of times a user is allowed to call
      * arrested route
      */
-    'maxTrial' => 3,
+    'max_trial' => 3,
+    /**
+     * string - Route that will be displayed in the notification
+     * that is sent when a user's pin has been changed
+     */
+    'change_pin_route' => url('change/pin'),
 
     /**
      * Pin notification configurations
