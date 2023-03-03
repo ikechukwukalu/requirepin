@@ -22,7 +22,7 @@ class PinChange  extends Notification implements ShouldQueue
             ->subject(trans('requirepin::pin.notify.subject'))
             ->line(trans('requirepin::pin.notify.introduction'))
             ->line(trans('requirepin::pin.notify.message'))
-            ->action(trans('requirepin::pin.notify.action'), config('requirepin.change_pin_route'))
+            ->action(trans('requirepin::pin.notify.action'), url(config('requirepin.change_pin_route')))
             ->line(trans('requirepin::pin.notify.complimentary_close'));
     }
 

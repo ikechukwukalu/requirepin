@@ -62,7 +62,7 @@ return [
      * string - Route that will be displayed in the notification
      * that is sent when a user's pin has been changed
      */
-    'change_pin_route' => url('change/pin'),
+    'change_pin_route' => 'change/pin',
 
     /**
      * Pin notification configurations
