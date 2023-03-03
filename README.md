@@ -43,6 +43,12 @@ composer require ikechukwukalu/requirepin
 - To receive json response add `'Accept': 'application/json'` to your headers.
 - To aid your familiarity with this package you can run `php artisan sample:routes` to scaffold routes that will call functions within the `BookController`.
 
+### sample routes
+
+- **POST** `v1/sample/books`
+- **DELETE** `v1/sample/books{id}`
+- **GET** `create/book`
+
 ## PUBLISH CONFIG
 
 - `php artisan vendor:publish --tag=rp-config`
