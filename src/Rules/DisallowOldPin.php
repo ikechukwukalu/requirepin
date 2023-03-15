@@ -74,7 +74,6 @@ class DisallowOldPin implements Rule
             ['number' => $this->number]);
     }
 
-
     /**
      * Get OldPin Model.
      *

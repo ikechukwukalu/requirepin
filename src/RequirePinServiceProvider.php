@@ -11,7 +11,6 @@ use Ikechukwukalu\Requirepin\Console\Commands\SampleRoutesCommand;
 
 class RequirePinServiceProvider extends ServiceProvider
 {
-
     public const LANG = __DIR__.'/lang';
     public const DB = __DIR__.'/migrations';
     public const VIEW = __DIR__.'/views';
