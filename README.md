@@ -42,7 +42,6 @@ composer require ikechukwukalu/requirepin
 ## NOTE
 
 - To receive json response add `'Accept': 'application/json'` to your headers.
-- To aid your familiarity with this package you can run `php artisan sample:routes` to scaffold routes that will call functions within the `BookController`.
 
 ### Sample routes
 
@@ -64,6 +63,8 @@ composer require ikechukwukalu/requirepin
 - `_pin`
 - `expires`
 - `signature`
+- `return_payload`
+- `pin_validation`
 
 ## PUBLISH CONFIG
 

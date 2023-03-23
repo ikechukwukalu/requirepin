@@ -10,8 +10,6 @@ class CommandTest extends TestCase
 
     public function test_fires_require_pin_commands(): void
     {
-        $this->artisan('sample:routes')->assertSuccessful();
-
         $this->artisan('vendor:publish --tag=rp-config')->assertSuccessful();
 
         $this->artisan('vendor:publish --tag=rp-migrations')->assertSuccessful();

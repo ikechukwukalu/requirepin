@@ -4,7 +4,7 @@ namespace Ikechukwukalu\Requirepin\Tests;
 
 use Ikechukwukalu\Requirepin\RequirePinServiceProvider;
 use Ikechukwukalu\Requirepin\Controllers\PinController;
-use Ikechukwukalu\Requirepin\Controllers\BookController;
+use Ikechukwukalu\Requirepin\Tests\Controllers\BookController;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Stevebauman\Location\LocationServiceProvider;

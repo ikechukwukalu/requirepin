@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
-use Ikechukwukalu\Requirepin\Models\Book;
+use Ikechukwukalu\Requirepin\Tests\Models\Book;
 use Ikechukwukalu\Requirepin\Models\TestUser;
 
 class PinTest extends TestCase

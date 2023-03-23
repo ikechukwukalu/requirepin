@@ -1,6 +1,6 @@
 <?php
 
-namespace Ikechukwukalu\Requirepin\Models;
+namespace Ikechukwukalu\Requirepin\Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

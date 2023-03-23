@@ -1,10 +1,11 @@
 <?php
 
-namespace Ikechukwukalu\Requirepin\Controllers;
+namespace Ikechukwukalu\Requirepin\Tests\Controllers;
 
+use Ikechukwukalu\Requirepin\Controllers\Controller;
 use Ikechukwukalu\Requirepin\Requests\CreateBookRequest;
 use Ikechukwukalu\Requirepin\Traits\Helpers;
-use Ikechukwukalu\Requirepin\Models\Book;
+use Ikechukwukalu\Requirepin\Tests\Models\Book;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;

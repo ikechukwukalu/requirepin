@@ -7,8 +7,6 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Router;
 
-use Ikechukwukalu\Requirepin\Console\Commands\SampleRoutesCommand;
-
 class RequirePinServiceProvider extends ServiceProvider
 {
     public const LANG = __DIR__.'/lang';
@@ -25,12 +23,6 @@ class RequirePinServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                SampleRoutesCommand::class
-            ]);
-        }
-
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('require.pin', RequirePin::class);
 
@@ -72,6 +64,5 @@ class RequirePinServiceProvider extends ServiceProvider
         );
 
         $this->app->make(\Ikechukwukalu\Requirepin\Controllers\PinController::class);
-        $this->app->make(\Ikechukwukalu\Requirepin\Controllers\BookController::class);
     }
 }

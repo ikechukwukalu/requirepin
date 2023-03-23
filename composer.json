@@ -13,13 +13,14 @@
             "Ikechukwukalu\\Requirepin\\Requests\\": "src/Requests/",
             "Ikechukwukalu\\Requirepin\\Rules\\": "src/Rules/",
             "Ikechukwukalu\\Requirepin\\Services\\": "src/Services/",
-            "Ikechukwukalu\\Requirepin\\Traits\\": "src/Traits/",
-            "Ikechukwukalu\\Requirepin\\Console\\Commands\\": "src/Console/Commands"
+            "Ikechukwukalu\\Requirepin\\Traits\\": "src/Traits/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ikechukwukalu\\Requirepin\\Tests\\": "Tests/"
+            "Ikechukwukalu\\Requirepin\\Tests\\": "Tests/",
+            "Ikechukwukalu\\Requirepin\\Tests\\Controllers\\": "Tests/Controllers/",
+            "Ikechukwukalu\\Requirepin\\Tests\\Models\\": "Tests/Models/"
         }
     },
     "scripts": {
