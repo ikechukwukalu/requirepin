@@ -31,18 +31,6 @@ abstract class TestCase extends BaseTestCase
             return 'login';
         })->name('login');
 
-        $router->get('change/pin', [PinController::class, 'changePinView'])
-            ->name('changePinView');
-
-        $router->get('pin/required/{uuid?}', [PinController::class, 'requirePinView'])
-            ->name('requirePinView');
-
-        $router->post('/test/change/pin', [PinController::class, 'changePin'])
-            ->name('changePin');
-
-        $router->post('/test/pin/required/{uuid}', [PinController::class,
-            'pinRequired'])->name('pinRequired');
-
         $router->post('test/v1/sample/books', [BookController::class, 'createBook'])
             ->name('createBookTest')
             ->middleware('require.pin');
@@ -50,6 +38,12 @@ abstract class TestCase extends BaseTestCase
         $router->delete('test/v1/sample/books/{id}', [BookController::class, 'deleteBook'])
             ->name('deleteBookTest')
             ->middleware('require.pin');
+
+        $router->post('/test/change/pin', [PinController::class, 'changePin'])
+            ->name('changePin');
+
+        $router->post('/test/pin/required/{uuid}', [PinController::class,
+            'pinRequired'])->name('pinRequired');
     }
 
     protected function getPackageProviders($app): array
