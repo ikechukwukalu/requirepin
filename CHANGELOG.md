@@ -1,4 +1,4 @@
-# v1.0.2
+# v1.0.1
 
 - Removed `BookController` controller
 - Removed `Book` model
