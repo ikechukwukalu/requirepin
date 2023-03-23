@@ -20,7 +20,8 @@
         "psr-4": {
             "Ikechukwukalu\\Requirepin\\Tests\\": "Tests/",
             "Ikechukwukalu\\Requirepin\\Tests\\Controllers\\": "Tests/Controllers/",
-            "Ikechukwukalu\\Requirepin\\Tests\\Models\\": "Tests/Models/"
+            "Ikechukwukalu\\Requirepin\\Tests\\Models\\": "Tests/Models/",
+            "Ikechukwukalu\\Requirepin\\Tests\\Requests\\": "Tests/Requests/"
         }
     },
     "scripts": {

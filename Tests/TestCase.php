@@ -31,10 +31,6 @@ abstract class TestCase extends BaseTestCase
             return 'login';
         })->name('login');
 
-        $router->get('change/pin', function () {
-            return 'changePinView';
-        })->name('changePinView');
-
         $router->post('/test/change/pin', [PinController::class, 'changePin'])
             ->name('changePin');
 

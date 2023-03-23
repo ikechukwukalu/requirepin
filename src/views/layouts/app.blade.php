@@ -55,12 +55,6 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @if (Route::has('createBook'))
-                                        <a class="dropdown-item" href="{{ route('createBook') }}">
-                                            {{ __('Create Book') }}
-                                        </a>
-                                    @endif
-
                                     @if (Route::has('changePinView'))
                                         <a class="dropdown-item" href="{{ route('changePinView') }}">
                                             {{ __('Change Pin') }}

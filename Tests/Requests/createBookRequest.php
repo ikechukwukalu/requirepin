@@ -1,6 +1,6 @@
 <?php
 
-namespace Ikechukwukalu\Requirepin\Requests;
+namespace Ikechukwukalu\Requirepin\Tests\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

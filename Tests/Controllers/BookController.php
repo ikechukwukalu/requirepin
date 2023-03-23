@@ -3,7 +3,7 @@
 namespace Ikechukwukalu\Requirepin\Tests\Controllers;
 
 use Ikechukwukalu\Requirepin\Controllers\Controller;
-use Ikechukwukalu\Requirepin\Requests\CreateBookRequest;
+use Ikechukwukalu\Requirepin\Tests\Requests\CreateBookRequest;
 use Ikechukwukalu\Requirepin\Traits\Helpers;
 use Ikechukwukalu\Requirepin\Tests\Models\Book;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +21,7 @@ class BookController extends Controller
     /**
      * Create Book.
      *
-     * @param \Ikechukwukalu\Requirepin\Requests\CreateBookRequest $request
+     * @param \Ikechukwukalu\Requirepin\Tests\Requests\CreateBookRequest $request
      *
      * @return \Illuminate\Http\JsonResponse
      * @return \Illuminate\Http\RedirectResponse
