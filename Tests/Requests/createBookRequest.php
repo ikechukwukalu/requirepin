@@ -6,8 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateBookRequest extends FormRequest
 {
-    protected $redirect = '/create/book';
-
     /**
      * Determine if the user is authorized to make this request.
      */
