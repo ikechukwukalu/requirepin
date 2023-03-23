@@ -43,12 +43,6 @@ composer require ikechukwukalu/requirepin
 
 - To receive json response add `'Accept': 'application/json'` to your headers.
 
-### Sample routes
-
-- **POST** `v1/sample/books`
-- **DELETE** `v1/sample/books{id}`
-- **GET** `create/book`
-
 ## HOW IT WORKS
 
 - First, it's like eating candy.
