@@ -117,8 +117,6 @@ class PinTest extends TestCase
 
         $response = $this->post($url, $postData, ['Accept' => 'application/json']);
         $responseArray = json_decode($response->getContent(), true);
-        var_dump($response->getContent());
-        die;
 
         $this->assertEquals(200, $responseArray['status_code']);
         $this->assertEquals('success', $responseArray['status']);
