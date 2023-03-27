@@ -51,3 +51,9 @@ jobs:
         run: composer install
       - name: "Execute unit tests"
         run: "composer run-script test"
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/php@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test

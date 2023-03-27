@@ -38,7 +38,6 @@
     "require": {
         "php": ">=8.0",
         "doctrine/dbal": "^3.5",
-        "hisorange/browser-detect": "^4.5",
         "laravel/framework": "^9.0|^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/ui": "^4.2",
