@@ -1,3 +1,7 @@
+# v1.0.2
+
+- Removed `Books` migration file
+
 # v1.0.1
 
 - Removed `BookController` controller class
