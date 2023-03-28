@@ -1,0 +1,22 @@
+{
+  "name": "requirepin",
+  "version": "1.0.0",
+  "description": "Laravel pin authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ikechukwukalu/requirepin.git"
+  },
+  "author": "ikechukwukalu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ikechukwukalu/requirepin/issues"
+  },
+  "homepage": "https://github.com/ikechukwukalu/requirepin#readme",
+  "dependencies": {
+    "snyk-php-plugin": "^1.9.4"
+  }
+}
