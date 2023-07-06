@@ -42,7 +42,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/ui": "^4.2",
         "predis/predis": "^2.0|^2.1",
-        "stevebauman/location": "^6.6"
+        "stevebauman/location": "^6.6 || ^7.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.4.4",
