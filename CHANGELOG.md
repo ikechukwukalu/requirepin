@@ -1,8 +1,12 @@
-# v1.0.2
+# v1.0.3
+
+- Removed static functions and switched to facade for middleware class
+
+## v1.0.2
 
 - Removed `Books` migration file
 
-# v1.0.1
+## v1.0.1
 
 - Removed `BookController` controller class
 - Removed `Book` model class

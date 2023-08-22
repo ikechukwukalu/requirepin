@@ -2,7 +2,11 @@
 
 namespace Ikechukwukalu\Requirepin;
 
+use Config;
+use Ikechukwukalu\Requirepin\Services\PinService;
+use Ikechukwukalu\Requirepin\Services\ThrottleRequestsService;
 use Ikechukwukalu\Requirepin\Middleware\RequirePin;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Router;
@@ -27,28 +31,28 @@ class RequirePinServiceProvider extends ServiceProvider
         $router->aliasMiddleware('require.pin', RequirePin::class);
 
         Route::middleware('api')->prefix('api')->group(function () {
-            $this->loadRoutesFrom(self::ROUTE_API);
+            $this->loadRoutesFrom(static::ROUTE_API);
         });
 
         Route::middleware('web')->group(function () {
-            $this->loadRoutesFrom(self::ROUTE_WEB);
+            $this->loadRoutesFrom(static::ROUTE_WEB);
         });
 
-        $this->loadMigrationsFrom(self::DB);
-        $this->loadViewsFrom(self::VIEW, 'requirepin');
-        $this->loadTranslationsFrom(self::LANG, 'requirepin');
+        $this->loadMigrationsFrom(static::DB);
+        $this->loadViewsFrom(static::VIEW, 'requirepin');
+        $this->loadTranslationsFrom(static::LANG, 'requirepin');
 
         $this->publishes([
-            self::CONFIG => config_path('requirepin.php'),
+            static::CONFIG => config_path('requirepin.php'),
         ], 'rp-config');
         $this->publishes([
-            self::DB => database_path('migrations'),
+            static::DB => database_path('migrations'),
         ], 'rp-migrations');
         $this->publishes([
-            self::LANG => lang_path('vendor/requirepin'),
+            static::LANG => lang_path('vendor/requirepin'),
         ], 'rp-lang');
         $this->publishes([
-            self::VIEW => resource_path('views/vendor/requirepin'),
+            static::VIEW => resource_path('views/vendor/requirepin'),
         ], 'rp-views');
     }
 
@@ -60,9 +64,25 @@ class RequirePinServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            self::CONFIG, 'require-pin'
+            static::CONFIG, 'require-pin'
         );
 
         $this->app->make(\Ikechukwukalu\Requirepin\Controllers\PinController::class);
+
+        $this->app->bind(ThrottleRequestsService::class, function (Application $app) {
+            return new ThrottleRequestsService(
+                config('sanctumauthstarter.login.maxAttempts', 3),
+                config('sanctumauthstarter.login.delayMinutes', 1)
+            );
+        });
+
+        $this->app->bind('PinService', PinService::class);
+
+        $appConfig = Config::get('app');
+        $packageFacades = [
+            'PinService' => \Ikechukwukalu\Clamavfileupload\Facades\Foundation\PinService::class,
+        ];
+        $appConfig['aliases'] = array_merge($appConfig['aliases'], $packageFacades);
+        Config::set('app', $appConfig);
     }
 }

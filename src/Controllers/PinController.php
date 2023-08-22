@@ -2,25 +2,26 @@
 
 namespace Ikechukwukalu\Requirepin\Controllers;
 
-use Ikechukwukalu\Requirepin\Traits\Helpers;
-use Ikechukwukalu\Requirepin\Services\PinService;
 use Ikechukwukalu\Requirepin\Requests\ChangePinRequest;
+use Ikechukwukalu\Requirepin\Services\PinService;
+use Ikechukwukalu\Requirepin\Traits\Helpers;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-class PinController extends Controller
+class PinController extends BaseController
 {
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     use Helpers;
 
-    private PinService $pinService;
-
-    public function __construct()
-    {
-        $this->pinService = new PinService;
-    }
+    public function __construct(private PinService $pinService)
+    {}
 
     /**
      * Change Pin.

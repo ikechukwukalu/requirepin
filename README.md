@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ikechukwukalu/requirepin?style=flat-square)](https://packagist.org/packages/ikechukwukalu/requirepin)
 [![Quality Score](https://img.shields.io/scrutinizer/quality/g/ikechukwukalu/requirepin/main?style=flat-square)](https://scrutinizer-ci.com/g/ikechukwukalu/requirepin/)
 [![Code Quality](https://img.shields.io/codefactor/grade/github/ikechukwukalu/requirepin?style=flat-square)](https://www.codefactor.io/repository/github/ikechukwukalu/requirepin)
-[![Vulnerability](https://img.shields.io/snyk/vulnerabilities/github/ikechukwukalu/requirepin?style=flat-square)](https://security.snyk.io/package/composer/ikechukwukalu%2Frequirepin)
+[![Known Vulnerabilities](https://snyk.io/test/github/ikechukwukalu/requirepin/badge.svg?style=flat-square)](https://security.snyk.io/package/composer/ikechukwukalu%2Frequirepin)
 [![Github Workflow Status](https://img.shields.io/github/actions/workflow/status/ikechukwukalu/requirepin/requirepin.yml?branch=main&style=flat-square)](https://github.com/ikechukwukalu/requirepin/actions/workflows/requirepin.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/ikechukwukalu/requirepin?style=flat-square)](https://packagist.org/packages/ikechukwukalu/requirepin)
 [![Licence](https://img.shields.io/packagist/l/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/blob/main/LICENSE.md)

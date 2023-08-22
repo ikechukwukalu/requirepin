@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
-         colors="true"
->
-  <coverage>
-    <include>
-      <directory suffix=".php">src/</directory>
-    </include>
-  </coverage>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.4/phpunit.xsd" bootstrap="vendor/autoload.php" colors="true">
+  <coverage/>
   <testsuites>
     <testsuite name="Test">
-        <directory>Tests</directory>
+      <directory>Tests</directory>
     </testsuite>
   </testsuites>
   <php>
@@ -19,4 +11,9 @@
     <env name="DB_CONNECTION" value="testing"/>
     <env name="APP_KEY" value="base64:seltugWs5DeIxCXj0fRuDShmHWII/edvp3afU2gkupE="/>
   </php>
+  <source>
+    <include>
+      <directory suffix=".php">src/</directory>
+    </include>
+  </source>
 </phpunit>

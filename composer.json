@@ -7,6 +7,7 @@
         "psr-4": {
             "Ikechukwukalu\\Requirepin\\": "src/",
             "Ikechukwukalu\\Requirepin\\Controllers\\": "src/Controllers/",
+            "Ikechukwukalu\\Requirepin\\Facades\\": "src/Facades/",
             "Ikechukwukalu\\Requirepin\\Middleware\\": "src/Middleware/",
             "Ikechukwukalu\\Requirepin\\Models\\": "src/Models/",
             "Ikechukwukalu\\Requirepin\\Notifications\\": "src/Notifications/",
@@ -36,13 +37,26 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=8.0",
-        "doctrine/dbal": "^3.5",
-        "laravel/framework": "^9.0|^10.0",
+        "doctrine/dbal": "^3.6",
+        "illuminate/auth": "^9.0|^10.0",
+        "illuminate/bus": "^9.0|^10.0",
+        "illuminate/broadcasting": "^9.0|^10.0",
+        "illuminate/contracts": "^9.0|^10.0",
+        "illuminate/database": "^9.0|^10.0",
+        "illuminate/events": "^9.0|^10.0",
+        "illuminate/http": "^9.0|^10.0",
+        "illuminate/notifications": "^9.0|^10.0",
+        "illuminate/queue": "^9.0|^10.0",
+        "illuminate/routing": "^9.0|^10.0",
+        "illuminate/support": "^9.0|^10.0",
+        "illuminate/validation": "^9.0|^10.0",
+        "illuminate/view": "^9.0|^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/ui": "^4.2",
+        "php": ">=8.0",
         "predis/predis": "^2.0|^2.1",
-        "stevebauman/location": "^6.6"
+        "stevebauman/location": "^6.6",
+        "symfony/http-foundation": "^6.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.4.4",

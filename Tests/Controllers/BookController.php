@@ -2,20 +2,21 @@
 
 namespace Ikechukwukalu\Requirepin\Tests\Controllers;
 
-use Ikechukwukalu\Requirepin\Controllers\Controller;
 use Ikechukwukalu\Requirepin\Tests\Requests\CreateBookRequest;
 use Ikechukwukalu\Requirepin\Traits\Helpers;
 use Ikechukwukalu\Requirepin\Tests\Models\Book;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
-class BookController extends Controller
+class BookController extends BaseController
 {
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     use Helpers;
 
     /**

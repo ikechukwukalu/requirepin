@@ -3,15 +3,10 @@
 namespace Ikechukwukalu\Requirepin\Middleware;
 
 use Closure;
-use Ikechukwukalu\Requirepin\Models\RequirePin as RequirePinModel;
-use Ikechukwukalu\Requirepin\Services\PinService;
+use Ikechukwukalu\Requirepin\Facades\PinService;
 use Ikechukwukalu\Requirepin\Traits\Helpers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\URL;
 
 class RequirePin
 {
@@ -19,20 +14,22 @@ class RequirePin
 
     public function handle(Request $request, Closure $next)
     {
+        $pinService = new PinService();
+
         if (!Auth::check()) {
             return $this->httpResponse(
-                ...PinService::pinRequestTerminated());
+                ...$pinService::pinRequestTerminated());
         }
 
         if ($request->has(config('requirepin.param', '_uuid'))
-            && PinService::isArrestedRequestValid($request))
+            && $pinService::isArrestedRequestValid($request))
         {
             return $next($request);
         }
 
-        PinService::cancelAllOpenArrestedRequests();
+        $pinService::cancelAllOpenArrestedRequests();
 
-        return PinService::requirePinValidationForRequest($request,
+        return $pinService::requirePinValidationForRequest($request,
             $this->getUserIp($request));
     }
 

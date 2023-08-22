@@ -191,7 +191,7 @@ class PinService {
      */
     public function errorResponseForPinRequired(Request $request, string $uuid, int $status_code, array $data): JsonResponse|RedirectResponse|Response
     {
-        if (Helpers::shouldResponseBeJson($request)) {
+        if ($this->shouldResponseBeJson($request)) {
             return $this->httpResponse($request,
                 trans('requirepin::general.fail'), $status_code, $data);
         }
@@ -214,7 +214,7 @@ class PinService {
      *
      * @return array
      */
-    public static function pinRequestTerminated(): array
+    public function pinRequestTerminated(): array
     {
         return [trans('requirepin::general.fail'), 401,
             ['message' => trans('requirepin::pin.terminated')]];
@@ -227,7 +227,7 @@ class PinService {
      *
      * @return bool
      */
-    public static function isArrestedRequestValid(Request $request): bool
+    public function isArrestedRequestValid(Request $request): bool
     {
         $param = config('requirepin.param', '_uuid');
         $requirePin = RequirePin::where('user_id', Auth::user()->id)
@@ -241,7 +241,7 @@ class PinService {
             return false;
         }
 
-        PinService::checkMaxTrial($requirePin);
+        $this->checkMaxTrial($requirePin);
 
         return true;
     }
@@ -251,7 +251,7 @@ class PinService {
      *
      * @return void
      */
-    public static function cancelAllOpenArrestedRequests(): void
+    public function cancelAllOpenArrestedRequests(): void
     {
         RequirePin::where('user_id', Auth::user()->id)
             ->whereNull('approved_at')
@@ -269,12 +269,12 @@ class PinService {
      * @return \Illuminate\Http\RedirectResponse
      * @return \Illuminate\Http\Response
      */
-    public static function requirePinValidationForRequest(Request $request, string $ip): JsonResponse|RedirectResponse|Response
+    public function requirePinValidationForRequest(Request $request, string $ip): JsonResponse|RedirectResponse|Response
     {
-        $arrestRouteData = PinService::arrestRequest($request, $ip);
-        [$status, $status_code, $data] = PinService::pinValidationURL(...$arrestRouteData);
+        $arrestRouteData = $this->arrestRequest($request, $ip);
+        [$status, $status_code, $data] = $this->pinValidationURL(...$arrestRouteData);
 
-        if (Helpers::shouldResponseBeJson($request))
+        if ($this->shouldResponseBeJson($request))
         {
             return ResponseFacade::json([
                 'status' => $status,
@@ -295,14 +295,14 @@ class PinService {
      *
      * @return array
      */
-    private static function arrestRequest(Request $request, string $ip): array
+    private function arrestRequest(Request $request, string $ip): array
     {
         $redirect_to = url()->previous() ?? '/';
         $uuid = (string) Str::uuid();
         $expires_at = now()->addSeconds(config('requirepin.duration',
             null));
         $pin_validation_url = URL::temporarySignedRoute(
-            Helpers::pinRequiredRoute($request), $expires_at, ['uuid' => $uuid]);
+            $this->pinRequiredRoute($request), $expires_at, ['uuid' => $uuid]);
 
         RequirePin::create([
             "user_id" => Auth::user()->id,
@@ -328,7 +328,7 @@ class PinService {
      *
      * @return array
      */
-    private static function pinValidationURL(string $url, null|string $redirect): array
+    private function pinValidationURL(string $url, null|string $redirect): array
     {
         return [trans('requirepin::general.success'), 200,
             [
@@ -354,7 +354,7 @@ class PinService {
         $this->arrestedRequest = Request::create($requirePin->route_arrested,
                         $requirePin->method, ['_uuid' => $uuid] + $this->payload);
 
-        if (Helpers::shouldResponseBeJson($request)) {
+        if ($this->shouldResponseBeJson($request)) {
             $this->arrestedRequest->headers->set('Accept', 'application/json');
         }
 
@@ -370,7 +370,7 @@ class PinService {
      */
     private function transferSessionsToNewRequest(Request $request): void
     {
-        if (Helpers::shouldResponseBeJson($request))
+        if ($this->shouldResponseBeJson($request))
         {
             return;
         }
@@ -466,7 +466,7 @@ class PinService {
      *
      * @return void
      */
-    private static function checkMaxTrial(RequirePin $requirePin): void
+    private function checkMaxTrial(RequirePin $requirePin): void
     {
         $maxTrial = $requirePin->retry;
         $maxTrial ++;
