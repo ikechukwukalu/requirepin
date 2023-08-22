@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/ikechukwukalu/requirepin/issues"
   },
-  "homepage": "https://github.com/ikechukwukalu/requirepin#readme",
-  "dependencies": {
-    "snyk-php-plugin": "^1.9.4"
-  }
+  "homepage": "https://github.com/ikechukwukalu/requirepin#readme"
 }
