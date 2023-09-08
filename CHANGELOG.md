@@ -1,4 +1,8 @@
-# v1.0.3
+# v1.0.4
+
+- Return correct status code from server for ajax requests
+
+## v1.0.3
 
 - Removed static functions and switched to facade for middleware class
 
