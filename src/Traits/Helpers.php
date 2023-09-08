@@ -41,7 +41,7 @@ trait Helpers {
                 'status' => $status,
                 'status_code' => $status_code,
                 'data' => $data
-            ]);
+            ], $status_code);
         }
 
         return back()->with('return_payload', json_encode([
