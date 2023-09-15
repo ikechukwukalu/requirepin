@@ -1,4 +1,8 @@
-# v1.0.4
+# v1.0.5
+
+- Corrected typos
+
+## v1.0.4
 
 - Return correct status code from server for ajax requests
 

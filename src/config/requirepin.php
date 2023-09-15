@@ -44,18 +44,17 @@ return [
      */
     'number' => 4,
     /**
-     * int - Number of times a user is allowed to authenticate
-     * using his pin
+     * int - Pin authentication rate limit
      */
     'max_attempts' => 3,
     /**
-     * int - Number of times a user is allowed to authenticate
-     * using his pin
+     * int - Number of minutes a user is supposed to wait before
+     * another attempt
      */
     'delay_minutes' => 1,
     /**
-     * int - Number of times a user is allowed to call
-     * arrested route
+     * int - Number of times a user is allowed to try and authenticate
+     * before the route is cancelled
      */
     'max_trial' => 3,
     /**
