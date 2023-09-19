@@ -6,6 +6,9 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/ikechukwukalu/requirepin/badge.svg?style=flat-square)](https://security.snyk.io/package/composer/ikechukwukalu%2Frequirepin)
 [![Github Workflow Status](https://img.shields.io/github/actions/workflow/status/ikechukwukalu/requirepin/requirepin.yml?branch=main&style=flat-square)](https://github.com/ikechukwukalu/requirepin/actions/workflows/requirepin.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/ikechukwukalu/requirepin?style=flat-square)](https://packagist.org/packages/ikechukwukalu/requirepin)
+[![GitHub Repo stars](https://img.shields.io/github/stars/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/issues)
+[![GitHub forks](https://img.shields.io/github/forks/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/forks)
 [![Licence](https://img.shields.io/packagist/l/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/blob/main/LICENSE.md)
 
 A simple Laravel package that provides a middleware which will require users to confirm routes utilizing their pin for authentication.
