@@ -18,7 +18,7 @@ class RequirePin
 
         if (!Auth::check()) {
             return $this->httpResponse(
-                ...$pinService::pinRequestTerminated());
+                ...$pinService::pinRequestTerminated($request));
         }
 
         if ($request->has(config('requirepin.param', '_uuid'))

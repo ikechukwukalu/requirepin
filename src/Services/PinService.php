@@ -214,9 +214,9 @@ class PinService {
      *
      * @return array
      */
-    public function pinRequestTerminated(): array
+    public function pinRequestTerminated(Request $request): array
     {
-        return [trans('requirepin::general.fail'), 401,
+        return [$request, trans('requirepin::general.fail'), 401,
             ['message' => trans('requirepin::pin.terminated')]];
     }
 
