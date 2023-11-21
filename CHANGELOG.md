@@ -1,4 +1,8 @@
-# v1.0.5
+# v1.0.6
+
+- Updated package to support Laravel 8
+
+## v1.0.5
 
 - Corrected typos
 

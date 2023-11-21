@@ -15,8 +15,8 @@ A simple Laravel package that provides a middleware which will require users to 
 
 ## REQUIREMENTS
 
-- PHP 8.0+
-- Laravel 9+
+- PHP 7.3+
+- Laravel 8+
 
 ## STEPS TO INSTALL
 
