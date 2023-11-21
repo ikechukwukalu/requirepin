@@ -92,6 +92,9 @@ class PinService {
                     $requirePin, $uuid);
         $this->transferSessionsToNewRequest($request);
 
+        $requirePin->approved_at = now();
+        $requirePin->save();
+
         if (session('return_payload')) {
             return redirect($requirePin->redirect_to)->with('return_payload',
                 session('return_payload'));
