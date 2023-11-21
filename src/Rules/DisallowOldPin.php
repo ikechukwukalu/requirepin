@@ -30,7 +30,7 @@ class DisallowOldPin implements Rule
             $this->number = $checkAll;
         }
 
-        $this->user = Auth::user();
+        $this->user = Auth::guard(config('requirepin.auth_guard', 'web'))->user();
     }
 
     /**

@@ -170,7 +170,7 @@ class PinService {
      */
     public function getRequirePin(string $uuid): ?RequirePin
     {
-        return RequirePin::where('user_id', Auth::user()->id)
+        return RequirePin::where('user_id', Auth::guard(config('requirepin.auth_guard', 'web'))->user()->id)
                         ->where('uuid', $uuid)
                         ->whereNull('approved_at')
                         ->whereNull('cancelled_at')
@@ -230,7 +230,7 @@ class PinService {
     public function isArrestedRequestValid(Request $request): bool
     {
         $param = config('requirepin.param', '_uuid');
-        $requirePin = RequirePin::where('user_id', Auth::user()->id)
+        $requirePin = RequirePin::where('user_id', Auth::guard(config('requirepin.auth_guard', 'web'))->user()->id)
                         ->where('route_arrested', $request->path())
                         ->where('uuid', $request->{$param})
                         ->whereNull('approved_at')
@@ -253,7 +253,7 @@ class PinService {
      */
     public function cancelAllOpenArrestedRequests(): void
     {
-        RequirePin::where('user_id', Auth::user()->id)
+        RequirePin::where('user_id', Auth::guard(config('requirepin.auth_guard', 'web'))->user()->id)
             ->whereNull('approved_at')
             ->whereNull('cancelled_at')
             ->update(['cancelled_at' => now()]);
@@ -305,7 +305,7 @@ class PinService {
             $this->pinRequiredRoute($request), $expires_at, ['uuid' => $uuid]);
 
         RequirePin::create([
-            "user_id" => Auth::user()->id,
+            "user_id" => Auth::guard(config('requirepin.auth_guard', 'web'))->user()->id,
             "uuid" => $uuid,
             "ip" => $ip,
             "device" => $request->userAgent(),
@@ -417,7 +417,7 @@ class PinService {
      */
     private function saveNewPin(array $validated)
     {
-        $user = Auth::user();
+        $user = Auth::guard(config('requirepin.auth_guard', 'web'))->user();
         $user->pin = Hash::make($validated['pin']);
         $user->default_pin = (string) $validated['pin'] === (string) config('requirepin.default', '0000');
 

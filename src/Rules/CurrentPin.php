@@ -31,13 +31,13 @@ class CurrentPin implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (Auth::user()->default_pin && !$this->allowDefaultPin) {
+        if (Auth::guard(config('requirepin.auth_guard', 'web'))->user()->default_pin && !$this->allowDefaultPin) {
             $this->defaultPin = true;
 
             return false;
         }
 
-        return Hash::check($value, Auth::user()->pin);
+        return Hash::check($value, Auth::guard(config('requirepin.auth_guard', 'web'))->user()->pin);
     }
 
     /**
