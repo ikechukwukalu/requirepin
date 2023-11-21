@@ -71,5 +71,11 @@ return [
          * boolean - Send a notification whenever pin is changed
          */
         'change' => true,
-    ]
+    ],
+
+    /**
+     * string - Route that will be displayed in the notification
+     * that is sent when a user's pin has been changed
+     */
+    'auth_middleware_guard' => 'auth',
 ];

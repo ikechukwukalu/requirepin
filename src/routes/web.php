@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Ikechukwukalu\Requirepin\Controllers\PinController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(config('requirepin.auth_middleware_guard', 'auth'))->group(function () {
     Route::post('change/pin', [PinController::class, 'changePin'])
         ->name('changePinWeb');
 

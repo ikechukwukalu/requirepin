@@ -1,6 +1,7 @@
 # v1.0.6
 
 - Updated package to support Laravel 8
+- Add settings for custom auth guard `auth_middleware_guard`
 
 ## v1.0.5
 

@@ -64,7 +64,7 @@ class RequirePinServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            static::CONFIG, 'require-pin'
+            static::CONFIG, 'requirepin'
         );
 
         $this->app->make(\Ikechukwukalu\Requirepin\Controllers\PinController::class);
