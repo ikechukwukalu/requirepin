@@ -85,6 +85,8 @@ class PinService {
                     session('return_payload'));
         }
 
+        $this->checkMaxTrial($requirePin);
+
         $this->throttleRequestsService->clearAttempts($request);
 
         $this->updateCurrentRequest($request, $requirePin);
@@ -251,8 +253,6 @@ class PinService {
         if (!isset($requirePin->id)) {
             return false;
         }
-
-        $this->checkMaxTrial($requirePin);
 
         return true;
     }

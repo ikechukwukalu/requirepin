@@ -3,6 +3,7 @@
 - Updated package to support Laravel 8
 - Added settings for custom auth guard - `middleware('auth_route_guard')`  and `Auth::guard()->check('auth_guard')`
 - Fixed middleware bug
+- Fixed max trial bug
 
 ## v1.0.5
 
