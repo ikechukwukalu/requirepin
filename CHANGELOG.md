@@ -1,7 +1,7 @@
 # v1.0.6
 
 - Updated package to support Laravel 8
-- Add settings for custom auth guard `auth_middleware_guard`
+- Added settings for custom auth guard - `middleware('auth_route_guard')`  and `Auth::guard()->check('auth_guard')`
 - Fixed middleware bug
 
 ## v1.0.5

@@ -77,5 +77,11 @@ return [
      * string - Route that will be displayed in the notification
      * that is sent when a user's pin has been changed
      */
-    'auth_middleware_guard' => 'auth',
+    'auth_route_guard' => 'auth',
+
+    /**
+     * string - Route that will be displayed in the notification
+     * that is sent when a user's pin has been changed
+     */
+    'auth_guard' => 'web',
 ];

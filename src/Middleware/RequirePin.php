@@ -16,7 +16,7 @@ class RequirePin
     {
         $pinService = new PinService();
 
-        if (!Auth::check()) {
+        if (!Auth::guard(config('requirepin.auth_guard'))->check()) {
             return $this->httpResponse(
                 ...$pinService::pinRequestTerminated($request));
         }
