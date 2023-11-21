@@ -85,8 +85,6 @@ class PinService {
                     session('return_payload'));
         }
 
-        $this->checkMaxTrial($requirePin);
-
         $this->throttleRequestsService->clearAttempts($request);
 
         $this->updateCurrentRequest($request, $requirePin);
@@ -110,9 +108,16 @@ class PinService {
      * @return null
      * @return array
      */
-    public function pinRequestAttempts(Request $request): ?array
+    public function pinRequestAttempts(Request $request, string $uuid): ?array
     {
-        return $this->requestAttempts($request, 'requirepin::pin.throttle');
+        $response = $this->requestAttempts($request, 'requirepin::pin.throttle');
+
+        if ($response) {
+            $requirePin = $this->getRequirePin($uuid);
+            $this->checkMaxTrial($requirePin);
+        }
+
+        return $response;
     }
 
     /**

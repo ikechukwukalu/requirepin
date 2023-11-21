@@ -54,7 +54,7 @@ class PinController extends BaseController
      */
     public function pinRequired(Request $request, string $uuid): JsonResponse|RedirectResponse|Response
     {
-        if ($data = $this->pinService->pinRequestAttempts($request)) {
+        if ($data = $this->pinService->pinRequestAttempts($request, $uuid)) {
             return $this->pinService->errorResponseForPinRequired($request,
                 $uuid, 500, $data);
         }
