@@ -73,7 +73,18 @@ class PinService {
      */
     public function handlePinRequired(Request $request, string $uuid): JsonResponse|Response|RedirectResponse
     {
-        $requirePin = $this->getRequirePin($uuid);
+        if (!$requirePin = $this->getRequirePin($uuid)) {
+            $this->transferSessionsToNewRequest($request);
+
+            return $this->shouldResponseBeJson($request)
+                ? $this->httpResponse($request,
+                    trans('requirepin::general.fail'), 500,
+                    ['message' => trans('requirepin::pin.not_allowed')]
+                  )
+                : redirect($requirePin->redirect_to)->with('return_payload',
+                    session('return_payload'));
+        }
+
         $this->throttleRequestsService->clearAttempts($request);
 
         $this->updateCurrentRequest($request, $requirePin);
@@ -472,7 +483,7 @@ class PinService {
         $maxTrial ++;
 
         if ($maxTrial >= config('requirepin.max_trial', 3)) {
-            $requirePin->approved_at = now();
+            $requirePin->cancelled_at = now();
         }
 
         $requirePin->retry = $maxTrial;

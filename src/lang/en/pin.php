@@ -18,6 +18,7 @@ return [
         'message' => 'If this action was not carried out by you, please click the link below to change your pin.',
         'action' => 'Click Here',
         'complimentary_close' => 'Take care!'
-    ]
+    ],
+    'not_allowed' => 'Not allowed!',
 
 ];
