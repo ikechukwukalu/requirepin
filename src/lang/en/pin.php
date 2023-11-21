@@ -10,7 +10,7 @@ return [
     'wrong' => 'You\'ve entered the wrong pin!',
     'throttle' => 'Too many attempts. Please try again in :seconds seconds.',
     'unverified_sender' => 'Sender cannot be verified!',
-    'unknown_error' => 'An error has occurred! You won\'t be able to validate this request anymore',
+    'unknown_error' => 'You are not allowed validate this request anymore',
     'exists' => '{0} You are not allowed to use the existing pin or any previous pin!|{1} You are not allowed to use any of your last :number pins or the existing pin!',
     'notify' => [
         'subject' => 'Your pin was changed.',

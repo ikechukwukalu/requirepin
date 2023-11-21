@@ -79,7 +79,7 @@ class PinService {
             return $this->shouldResponseBeJson($request)
                 ? $this->httpResponse($request,
                     trans('requirepin::general.fail'), 400,
-                    ['message' => trans('requirepin::pin.not_allowed')]
+                    ['message' => trans('requirepin::pin.unknown_error')]
                   )
                 : redirect($requirePin->redirect_to)->with('return_payload',
                     session('return_payload'));
