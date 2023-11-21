@@ -54,6 +54,18 @@ composer require ikechukwukalu/requirepin
 - This middleware will arrest all incoming requests.
 - A temporary URL (`pin/required/{uuid}`) is generated for a user to authenticate with the specified input `config(requirepin.input)` using their pin.
 - It either returns a `JSON` response with the generated URL or it redirects to a page where a user is required to authenticate the request by entering their pin into a form that will send a **POST** request to the generated URL when submitted.
+- To display return payload within blade:
+
+```js
+@if (session('return_payload'))
+    @php
+        [$status, $status_code, $data] = json_decode(session('return_payload'), true);
+    @endphp
+    <div class="alert alert-{!! $status === 'fail' ? 'danger' : 'success' !!} m-5 text-center">
+        {!! $data['message'] !!}
+    </div>
+@endif
+```
 
 ### Reserved keys for payload
 

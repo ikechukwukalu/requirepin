@@ -13,7 +13,7 @@
                                 [$status, $status_code, $data] = json_decode(session('return_payload'), true);
                             @endphp
                             <div class="alert alert-{!! $status === 'fail' ? 'danger' : 'success' !!} m-5 text-center">
-                                {!! $data[0] !!}
+                                {!! $data['message'] !!}
                             </div>
                         @endif
                         @if (session('pin_validation'))
