@@ -479,8 +479,7 @@ class PinService {
      */
     private function checkMaxTrial(RequirePin $requirePin): void
     {
-        $maxTrial = $requirePin->retry;
-        $maxTrial ++;
+        $maxTrial = $requirePin->retry + 1;
 
         if ($maxTrial >= config('requirepin.max_trial', 3)) {
             $requirePin->cancelled_at = now();
