@@ -117,6 +117,12 @@ class PinService {
 
         if ($response) {
             $requirePin = $this->getRequirePin($uuid);
+
+            if(!$requirePin) {
+                return ['message' =>
+                    trans('requirepin::pin.invalid_url')];
+            }
+
             $this->checkMaxTrial($requirePin);
         }
 
