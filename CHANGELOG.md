@@ -1,4 +1,8 @@
-# v1.0.6
+# v2.0.0
+
+- Updated package to support Laravel 11
+
+## v1.0.6
 
 - Updated package to support Laravel 8
 - Added settings for custom auth guard - `middleware('auth_route_guard')`  and `Auth::guard()->check('auth_guard')`
