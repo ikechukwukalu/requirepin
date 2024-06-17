@@ -14,7 +14,7 @@ class ThrottleRequestsService {
     public function __construct(int $maxAttempts = 5, int $delayMinutes = 1)
     {
         $this->maxAttempts = $maxAttempts;
-        $this->decayMinutes = $delayMinutes;
+        $this->delayMinutes = $delayMinutes;
     }
 
     public function hasTooManyAttempts (Request $request)
