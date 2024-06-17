@@ -9,7 +9,7 @@ class ThrottleRequestsService {
     use AuthenticatesUsers;
 
     public $maxAttempts = 5; // change to the max attempt you want.
-    public $decayMinutes = 1;
+    public $delayMinutes = 1;
 
     public function __construct(int $maxAttempts = 5, int $delayMinutes = 1)
     {
