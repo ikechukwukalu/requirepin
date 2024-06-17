@@ -84,4 +84,9 @@ return [
      * that is sent when a user's pin has been changed
      */
     'auth_guard' => 'web',
+    
+    /**
+     * sanctum/api - Route middleware of authenticated user
+     */
+    'auth_middleware' => 'sanctum',
 ];
