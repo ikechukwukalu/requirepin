@@ -23,10 +23,10 @@ abstract class TestCase extends BaseTestCase
 
     protected function defineDatabaseMigrations()
     {
-        artisan($this, 'migrate', ['--database' => 'testbench']);
+        artisan($this, 'migrate', ['--database' => 'testing']);
 
         $this->beforeApplicationDestroyed(
-            fn () => artisan($this, 'migrate:rollback', ['--database' => 'testbench'])
+            fn () => artisan($this, 'migrate:rollback', ['--database' => 'testing'])
         );
         $this->loadMigrationsFrom(__DIR__.'/migrations');
     }
