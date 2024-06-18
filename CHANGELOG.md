@@ -1,4 +1,8 @@
-# v2.0.1
+# v2.0.2
+
+- Fixed test
+
+## v2.0.1
 
 - Updated doctrine/dbal package to support dependencies
 
