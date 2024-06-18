@@ -1,4 +1,8 @@
-# v2.0.0
+# v2.0.1
+
+- Updated doctrine/dbal package to support dependencies
+
+## v2.0.0
 
 - Updated package to support Laravel 11
 
