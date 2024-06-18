@@ -3,15 +3,15 @@
 namespace Ikechukwukalu\Requirepin\Tests;
 
 use function Orchestra\Testbench\artisan;
+use function Orchestra\Testbench\workbench_path;
 use Ikechukwukalu\Requirepin\RequirePinServiceProvider;
 use Ikechukwukalu\Requirepin\Controllers\PinController;
 use Ikechukwukalu\Requirepin\Tests\Controllers\BookController;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Orchestra\Testbench\Attributes\WithMigration;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Stevebauman\Location\LocationServiceProvider;
 
-#[WithMigration]
+
 abstract class TestCase extends BaseTestCase
 {
     use RefreshDatabase;
@@ -28,6 +28,7 @@ abstract class TestCase extends BaseTestCase
         $this->beforeApplicationDestroyed(
             fn () => artisan($this, 'migrate:rollback', ['--database' => 'testing'])
         );
+        $this->loadMigrationsFrom(workbench_path('database/migrations'));
         $this->loadMigrationsFrom(__DIR__.'/migrations');
     }
 
