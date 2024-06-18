@@ -2,6 +2,7 @@
 
 namespace Ikechukwukalu\Requirepin\Tests;
 
+use function Orchestra\Testbench\artisan;
 use Ikechukwukalu\Requirepin\RequirePinServiceProvider;
 use Ikechukwukalu\Requirepin\Controllers\PinController;
 use Ikechukwukalu\Requirepin\Tests\Controllers\BookController;
@@ -22,7 +23,11 @@ abstract class TestCase extends BaseTestCase
 
     protected function defineDatabaseMigrations()
     {
-        $this->loadLaravelMigrations();
+        artisan($this, 'migrate', ['--database' => 'testbench']);
+
+        $this->beforeApplicationDestroyed(
+            fn () => artisan($this, 'migrate:rollback', ['--database' => 'testbench'])
+        );
         $this->loadMigrationsFrom(__DIR__.'/migrations');
     }
 
