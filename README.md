@@ -1,15 +1,15 @@
 # RequirePin
 
-![Latest Version on Packagist](https://img.shields.io/packagist/v/ikechukwukalu/requirepin.svg?style=flat-square)
-![Quality Score](https://img.shields.io/scrutinizer/g/ikechukwukalu/requirepin.svg?style=flat-square)
-![Code Quality](https://img.shields.io/codefactor/grade/github/ikechukwukalu/requirepin/main?style=flat-square)
-![Known Vulnerabilities](https://snyk.io/test/github/ikechukwukalu/requirepin/badge.svg?style=flat-square)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ikechukwukalu/requirepin/Tests?style=flat-square)
-![Total Downloads](https://img.shields.io/packagist/dt/ikechukwukalu/requirepin.svg?style=flat-square)
-![GitHub Repo stars](https://img.shields.io/github/stars/ikechukwukalu/requirepin?style=social)
-![GitHub issues](https://img.shields.io/github/issues/ikechukwukalu/requirepin.svg?style=flat-square)
-![GitHub forks](https://img.shields.io/github/forks/ikechukwukalu/requirepin.svg?style=flat-square)
-![License](https://img.shields.io/github/license/ikechukwukalu/requirepin.svg?style=flat-square)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/ikechukwukalu/requirepin?style=flat-square)](https://packagist.org/packages/ikechukwukalu/requirepin)
+[![Quality Score](https://img.shields.io/scrutinizer/quality/g/ikechukwukalu/requirepin/main?style=flat-square)](https://scrutinizer-ci.com/g/ikechukwukalu/requirepin/)
+[![Code Quality](https://img.shields.io/codefactor/grade/github/ikechukwukalu/requirepin?style=flat-square)](https://www.codefactor.io/repository/github/ikechukwukalu/requirepin)
+[![Known Vulnerabilities](https://snyk.io/test/github/ikechukwukalu/requirepin/badge.svg?style=flat-square)](https://security.snyk.io/package/composer/ikechukwukalu%2Frequirepin)
+[![Github Workflow Status](https://img.shields.io/github/actions/workflow/status/ikechukwukalu/requirepin/requirepin.yml?branch=main&style=flat-square)](https://github.com/ikechukwukalu/requirepin/actions/workflows/requirepin.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/ikechukwukalu/requirepin?style=flat-square)](https://packagist.org/packages/ikechukwukalu/requirepin)
+[![GitHub Repo stars](https://img.shields.io/github/stars/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/issues)
+[![GitHub forks](https://img.shields.io/github/forks/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/forks)
+[![Licence](https://img.shields.io/packagist/l/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/blob/main/LICENSE.md)
 
 **RequirePin** is a Laravel package that provides middleware to enforce PIN confirmation and validation before processing requests to specified routes, adding an extra layer of security to your application.
 
