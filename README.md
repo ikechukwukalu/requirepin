@@ -1,62 +1,126 @@
-# REQUIRE PIN
+# RequirePin
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/ikechukwukalu/requirepin?style=flat-square)](https://packagist.org/packages/ikechukwukalu/requirepin)
-[![Quality Score](https://img.shields.io/scrutinizer/quality/g/ikechukwukalu/requirepin/main?style=flat-square)](https://scrutinizer-ci.com/g/ikechukwukalu/requirepin/)
-[![Code Quality](https://img.shields.io/codefactor/grade/github/ikechukwukalu/requirepin?style=flat-square)](https://www.codefactor.io/repository/github/ikechukwukalu/requirepin)
-[![Known Vulnerabilities](https://snyk.io/test/github/ikechukwukalu/requirepin/badge.svg?style=flat-square)](https://security.snyk.io/package/composer/ikechukwukalu%2Frequirepin)
-[![Github Workflow Status](https://img.shields.io/github/actions/workflow/status/ikechukwukalu/requirepin/requirepin.yml?branch=main&style=flat-square)](https://github.com/ikechukwukalu/requirepin/actions/workflows/requirepin.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/ikechukwukalu/requirepin?style=flat-square)](https://packagist.org/packages/ikechukwukalu/requirepin)
-[![GitHub Repo stars](https://img.shields.io/github/stars/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/issues)
-[![GitHub forks](https://img.shields.io/github/forks/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/forks)
-[![Licence](https://img.shields.io/packagist/l/ikechukwukalu/requirepin?style=flat-square)](https://github.com/ikechukwukalu/requirepin/blob/main/LICENSE.md)
+![Latest Version on Packagist](https://img.shields.io/packagist/v/ikechukwukalu/requirepin.svg?style=flat-square)
+![Quality Score](https://img.shields.io/scrutinizer/g/ikechukwukalu/requirepin.svg?style=flat-square)
+![Code Quality](https://img.shields.io/codefactor/grade/github/ikechukwukalu/requirepin/main?style=flat-square)
+![Known Vulnerabilities](https://snyk.io/test/github/ikechukwukalu/requirepin/badge.svg?style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ikechukwukalu/requirepin/Tests?style=flat-square)
+![Total Downloads](https://img.shields.io/packagist/dt/ikechukwukalu/requirepin.svg?style=flat-square)
+![GitHub Repo stars](https://img.shields.io/github/stars/ikechukwukalu/requirepin?style=social)
+![GitHub issues](https://img.shields.io/github/issues/ikechukwukalu/requirepin.svg?style=flat-square)
+![GitHub forks](https://img.shields.io/github/forks/ikechukwukalu/requirepin.svg?style=flat-square)
+![License](https://img.shields.io/github/license/ikechukwukalu/requirepin.svg?style=flat-square)
 
-A simple Laravel package that provides a middleware which will require users to confirm routes utilizing their pin for authentication.
+**RequirePin** is a Laravel package that provides middleware to enforce PIN confirmation and validation before processing requests to specified routes, adding an extra layer of security to your application.
 
-## REQUIREMENTS
+## Table of Contents
 
-- PHP 7.3+
-- Laravel 8+
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+  - [Applying Middleware](#applying-middleware)
+  - [Routes](#routes)
+- [Customization](#customization)
+  - [Publishing Configuration](#publishing-configuration)
+  - [Publishing Language Files](#publishing-language-files)
+  - [Publishing Views](#publishing-views)
+- [Reserved Keys for Payload](#reserved-keys-for-payload)
+- [To Display Return Payload Within Blade](#to-display-return-payload-within-blade)
+- [Security Considerations](#security-considerations)
+- [Contributing](#contributing)
+- [License](#license)
 
-## STEPS TO INSTALL
+## Requirements
 
-``` shell
+- PHP 7.3 or higher
+- Laravel 8 or higher
+
+## Installation
+
+To install the package, run the following command:
+
+```bash
 composer require ikechukwukalu/requirepin
 ```
 
-- `php artisan vendor:publish --tag=rp-migrations`
-- `php artisan migrate`
-- Set `REDIS_CLIENT=predis` and `QUEUE_CONNECTION=redis` within your `.env` file.
-- `php artisan queue:work`
+After installation, publish the migration files:
 
-## ROUTES
+```bash
+php artisan vendor:publish --tag=rp-migrations
+```
 
-### Api routes
+Then, run the migrations:
 
-- **POST** `api/change/pin`
-- **POST** `api/pin/required/{uuid}`
+```bash
+php artisan migrate
+```
 
-### Web routes
+Configure your `.env` file to use Redis for queue management:
 
-- **POST** `change/pin`
-- **POST** `pin/required/{uuid}`
-- **GET** `change/pin`
-- **GET** `pin/required/{uuid?}`
+```env
+REDIS_CLIENT=predis
+QUEUE_CONNECTION=redis
+```
 
-## NOTE
+Finally, start the queue worker:
 
-- To receive json response add `'Accept': 'application/json'` to your headers.
+```bash
+php artisan queue:work
+```
 
-## HOW IT WORKS
+## Configuration
 
-- First, it's like eating candy.
-- The `require.pin` middlware should be added to a route or route group.
-- This middleware will arrest all incoming requests.
-- A temporary URL (`pin/required/{uuid}`) is generated for a user to authenticate with the specified input `config(requirepin.input)` using their pin.
-- It either returns a `JSON` response with the generated URL or it redirects to a page where a user is required to authenticate the request by entering their pin into a form that will send a **POST** request to the generated URL when submitted.
-- To display return payload within blade:
+**RequirePin** uses Redis to manage PIN confirmation queues efficiently. Ensure that your Redis server is properly configured and running.
 
-```js
+## Usage
+
+### Applying Middleware
+
+To enforce PIN confirmation on specific routes, apply the `require.pin` middleware to those routes or route groups. For example:
+
+```php
+Route::middleware(['require.pin'])->group(function () {
+    // Protected routes
+});
+```
+
+### Routes
+
+The package provides the following routes:
+
+**API Routes:**
+
+- `POST api/change/pin`: Endpoint to change the user's PIN.
+- `POST api/pin/required/{uuid}`: Endpoint to confirm the PIN for a specific request.
+
+**Web Routes:**
+
+- `POST change/pin`: Endpoint to change the user's PIN.
+- `POST pin/required/{uuid}`: Endpoint to confirm the PIN for a specific request.
+- `GET change/pin`: Page to display the form for changing the PIN.
+- `GET pin/required/{uuid?}`: Page to display the form for PIN confirmation.
+
+**Note:** To receive JSON responses, add the `'Accept: application/json'` header to your requests.
+
+## Reserved Keys for Payload
+
+The following keys are reserved for use within the payload:
+
+- `uuid` - Unique identifier for the PIN request.
+- `pin` - The PIN value submitted by the user.
+- `expires` - Expiration time for the PIN request.
+- `signature` - Timestamp indicating when the PIN was verified.
+- `return_payload`
+- `pin_validation`
+
+Ensure these keys are not overridden when handling the payload.
+
+## To Display Return Payload Within Blade
+
+To display the returned payload values within a Blade template, use:
+
+```blade
 @if (session('return_payload'))
     @php
         [$status, $status_code, $data] = json_decode(session('return_payload'), true);
@@ -67,27 +131,18 @@ composer require ikechukwukalu/requirepin
 @endif
 ```
 
-### Reserved keys for payload
+You can customize this based on your application's needs.
 
-- `_uuid`
-- `_pin`
-- `expires`
-- `signature`
-- `return_payload`
-- `pin_validation`
+## Security Considerations
 
-## PUBLISH CONFIG
+- **PIN Policies:** Ensure that your application enforces strong PIN policies, such as minimum length and complexity requirements.
+- **Rate Limiting:** Implement rate limiting on PIN confirmation endpoints to prevent brute-force attacks.
+- **Secure Storage:** Store PINs securely using appropriate hashing algorithms.
 
-- `php artisan vendor:publish --tag=rp-config`
+## Contributing
 
-## PUBLISH LANG
+Contributions are welcome! Please read the [contribution guidelines](CONTRIBUTING.md) before submitting a pull request.
 
-- `php artisan vendor:publish --tag=rp-lang`
+## License
 
-## PUBLISH VIEWS
-
-- `php artisan vendor:publish --tag=rp-views`
-
-## LICENSE
-
-The RP package is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This package is open-sourced software licensed under the [MIT license](LICENSE.md).
