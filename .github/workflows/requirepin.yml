@@ -11,7 +11,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout code"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v4"
       - name: "Check file permissions"
         run: |
           test "$(find . -type f -not -path './.git/*' -executable)" == ""
@@ -28,7 +28,7 @@ jobs:
           php-version: "8.2"
           tools: "parallel-lint"
       - name: "Checkout code"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v4"
       - name: "Validate Composer configuration"
         run: "composer validate --strict"
       - name: "Check source code for syntax errors"
@@ -39,14 +39,18 @@ jobs:
       - "byte_level"
       - "syntax_errors"
     runs-on: "ubuntu-latest"
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["8.2", "8.3", "8.4"]
     steps:
       - name: Setup PHP
-        uses: shivammathur/setup-php@master
+        uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: ${{ matrix.php }}
           extension-csv: mbstring, bcmath
       - name: "Checkout code"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v4"
       - name: Composer install
         run: composer install
       - name: "Execute unit tests"
